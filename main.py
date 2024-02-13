@@ -3,6 +3,7 @@ import pymysql
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
+import os
 # Database configuration
 db_config = {
     'host': '34.136.12.173',
@@ -63,4 +64,4 @@ def dashboard():
     return render_template('dashboard.html', calculations=calculations_list)
 
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0',port=8003)
+    app.run(debug=True,host='0.0.0.0',port=int(os.environ.get("PORT",8003)))
