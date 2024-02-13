@@ -21,7 +21,7 @@ pipeline {
                     sudo apt install -y python3-pip
                     pip3 install -r requirements.txt
                     python3 schema.py
-                    nohup python3 main.py > output.log 2>&1 &
+                    sudo nohup python3 main.py > output.log 2>&1 &
                     '''
                 }
             }
