@@ -12,7 +12,7 @@ pipeline {
                 echo 'Inside Build Stage'
                 script {
                     ver = readFile('version').trim()
-                    sh 'echo ${ver}'
+                    sh "echo ${ver}"
                     sh "sudo docker buildx build -t ${ver} ."
                 }
             }
@@ -23,9 +23,9 @@ pipeline {
                 echo 'Inside DockerHub Push Stage'
                 script {
                     withCredentials([usernamePassword(credentialsId: 'docker-creds', passwordVariable: 'pass', usernameVariable: 'user')]) {
-                        sh 'sudo docker login -u ankitraut0987 -p ${pass} > /dev/null 2>&1'
-                        sh 'echo ${ver}'
-                        sh 'sudo docker push ${ver}'
+                        sh "sudo docker login -u ${user} -p ${pass} > /dev/null 2>&1"
+                        sh "echo ${ver}"
+                        sh "sudo docker push ${ver}"
                     }
                 }
             }
@@ -34,7 +34,7 @@ pipeline {
             steps {
                 echo 'Inside Deploy Stage'
                 sh 'sudo docker rm -f calc-app'
-                sh 'sudo docker run -p 8001:8000 --name calc-app ${ver}'
+                sh "sudo docker run -p 8001:8000 --name calc-app ${ver}"
             }
         }
     }
