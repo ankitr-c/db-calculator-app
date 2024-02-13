@@ -5,7 +5,11 @@ pipeline {
             steps {
                 echo 'Inside Clone Stage'
                 git branch: 'main', url: 'https://github.com/ankitr-c/db-calculator-app.git'
-                pwd
+                script {
+                    sh '''
+                    pwd
+                    '''
+                }
             }
         }
         stage('Config') {
