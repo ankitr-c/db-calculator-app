@@ -23,6 +23,8 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'docker-creds', passwordVariable: 'pass', usernameVariable: 'user')]) {
                         // sh 'sudo docker login -u ${user} -p ${pass}'
+                        sh 'echo ${user}'
+                        sh 'echo ${pass}'
                         sh 'sudo docker login -u ${user} -p ${pass} > /dev/null 2>&1'
                         sh 'sudo docker push ${ver}'
                     }
