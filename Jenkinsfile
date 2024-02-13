@@ -25,7 +25,7 @@ pipeline {
                         // sh 'sudo docker login -u ${user} -p ${pass}'
                         sh 'echo ${user}'
                         sh 'echo ${pass}'
-                        sh 'sudo docker login -u ${user} -p ${pass} > /dev/null 2>&1'
+                        sh 'sudo docker login -u ankitraut0987 -p ${pass} > /dev/null 2>&1'
                         sh 'sudo docker push ${ver}'
                     }
                 }
