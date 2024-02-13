@@ -12,6 +12,7 @@ pipeline {
                 echo 'Inside Build Stage'
                 script {
                     ver = readFile('version').trim()
+                    sh 'echo ${ver}'
                     sh "sudo docker buildx build -t ${ver} ."
                 }
             }
