@@ -22,10 +22,8 @@ pipeline {
                 echo 'Inside DockerHub Push Stage'
                 script {
                     withCredentials([usernamePassword(credentialsId: 'docker-creds', passwordVariable: 'pass', usernameVariable: 'user')]) {
-                        // sh 'sudo docker login -u ${user} -p ${pass}'
-                        sh 'echo ${user}'
-                        sh 'echo ${pass}'
                         sh 'sudo docker login -u ankitraut0987 -p ${pass} > /dev/null 2>&1'
+                        sh 'echo ${ver}'
                         sh 'sudo docker push ${ver}'
                     }
                 }
