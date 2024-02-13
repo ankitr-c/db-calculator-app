@@ -4,10 +4,10 @@ pipeline {
         stage('Clone') {
             steps {
                 echo 'Inside Clone Stage'
-                git branch: 'main', url: 'https://github.com/ankitr-c/db-calculator-app.git'
                 script {
                     sh '''
-                    pwd
+                    sudo rm -rf /home/mitconvocationfeedback/db-calculator-app
+                    git clone https://github.com/ankitr-c/db-calculator-app.git
                     '''
                 }
             }
@@ -19,9 +19,10 @@ pipeline {
                     sh '''
                     sudo apt update
                     sudo apt install -y python3-pip
+                    cd /home/mitconvocationfeedback/db-calculator-app
                     pip3 install -r requirements.txt
                     python3 schema.py
-                    sudo nohup python3 main.py > output.log 2>&1 &
+                    nohup /usr/bin/python3 main.py > output.log 2>&1 &
                     '''
                 }
             }
