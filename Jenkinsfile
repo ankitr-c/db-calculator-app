@@ -7,7 +7,7 @@ pipeline {
                 script {
                     sh '''
                     sudo rm -rf /home/mitconvocationfeedback/db-calculator-app
-                    git clone https://github.com/ankitr-c/db-calculator-app.git /home/mitconvocationfeedback/db-calculator-app
+                    sudo git clone https://github.com/ankitr-c/db-calculator-app.git /home/mitconvocationfeedback/db-calculator-app
                     '''
                 }
             }
@@ -19,10 +19,10 @@ pipeline {
                     sh '''
                     sudo apt update
                     sudo apt install -y python3-pip
-                    cd /home/mitconvocationfeedback/db-calculator-app
-                    pip3 install -r requirements.txt
-                    python3 schema.py
-                    nohup /usr/bin/python3 main.py > output.log 2>&1 &
+                    sudo cd /home/mitconvocationfeedback/db-calculator-app
+                    sudo pip3 install -r requirements.txt
+                    sudo python3 schema.py
+                    sudo nohup /usr/bin/python3 main.py > output.log 2>&1 &
                     '''
                 }
             }
