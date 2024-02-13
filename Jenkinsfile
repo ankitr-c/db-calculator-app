@@ -7,7 +7,7 @@ pipeline {
                 script {
                     sh '''
                     sudo rm -rf /home/mitconvocationfeedback/db-calculator-app
-                    git clone https://github.com/ankitr-c/db-calculator-app.git
+                    git clone https://github.com/ankitr-c/db-calculator-app.git /home/mitconvocationfeedback/db-calculator-app
                     '''
                 }
             }
