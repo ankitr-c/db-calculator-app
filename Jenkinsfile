@@ -34,7 +34,7 @@ pipeline {
             steps {
                 echo 'Inside Deploy Stage'
                 sh 'sudo docker rm -f calc-app'
-                sh "sudo docker run -p 8001:8000 --name calc-app ${ver}"
+                sh "sudo docker run -d -p 8001:8000 --name calc-app ${ver}"
             }
         }
     }
