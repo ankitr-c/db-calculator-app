@@ -1,16 +1,19 @@
 from flask import Flask, render_template, request, jsonify
 import pymysql
 from flask_cors import CORS
+import os
+import creds
+
 app = Flask(__name__)
 CORS(app)
-import os
+
 # Database configuration
 db_config = {
-    'host': '34.136.12.173',
-    'user': 'root',  # Replace with your MySQL username
-    'password': 'root',  # Replace with your MySQL password
-    'port': 3306,
-    'database': 'demo'
+    'host': creds.host,
+    'user': creds.user,  # Replace with your MySQL username
+    'password': creds.password,  # Replace with your MySQL password
+    'port': creds.port,
+    'database': creds.database
 }
 
 # Establish database connection
